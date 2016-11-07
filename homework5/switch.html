@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Switch</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var y = prompt("Выберите действие: 1 = Сложить; 2 = Вычесть; 3 = Умножить; 4 = Разделить; 5 = Проценты");
+		var a = 24;
+		var b = 10;
+		var c;
+			switch (y) {
+					case '1':{
+						var c = +a + +b
+						alert (c);
+						}
+						break;
+					case '2': {
+						var c = a - b
+						alert (c);
+						}
+						break;
+					case '3': {
+						var c = a * b
+						alert (c);
+						}
+						break;
+					case '4': {
+						var c = a / b
+						alert (c);
+						} 
+						break;
+					case '5': {
+						var c = a * (b/100)
+						alert (c);
+						break;
+						}
+					default: 
+			            {
+			            document.write("Неверный выбор.");
+			            }
+			            break;
+					}
+			</script>
+		</body>
+</html>
