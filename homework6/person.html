@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>Person</title>
+
+    <script type="text/javascript">
+        var person = {
+            name: '',
+            sname: '',
+            age: ''
+            }
+        var arr = [];
+       
+        function ask() {
+            person.name = prompt("Введите свое имя:");
+            person.sname = prompt("Введите свою фамилию:");
+            person.age = prompt("Введите свой возраст:");
+            arr.push(person);
+            }
+
+        function say() {
+            document.write("Имя: " + person.name + "<br />");
+            document.write("Фамилия: " + person.sname + "<br />");
+            document.write("Возраст: " + person.age + "<br />");
+            document.write("<hr/>");
+                   }     
+        do {
+            ask();
+            say();
+            repeater = confirm("Добавить новые данные?");
+        }while (repeater)
+    </script>
+
+</head>
+<body>
+</body>
+</html>
