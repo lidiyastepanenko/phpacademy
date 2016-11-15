@@ -1,0 +1,49 @@
+﻿<!--
+
+          Функции передаваемые в качестве аргументов другой функции 
+          (CallBack Function - функции обратного вызова).
+
+-->
+
+<html>
+<head>
+    <title>CallBack Function</title>
+
+    <script type="text/javascript">
+
+        function add(a, b) {
+            return a + b;
+            }
+        function sub(a, b) {
+            return a - b;
+            }
+        function mul(a, b) {
+            return a * b;
+            }
+        function div(a, b) {
+            return a / b;
+            }
+        function per(a, b){
+            return a * (b/100);
+            }
+
+        function show(callBackFunction, a, b) {
+
+            var result = callBackFunction(a, b);
+            document.write("<p>" + result);
+            };
+
+        show(add, 10, 20);
+
+        show(sub, 50, 30);
+
+        show(mul, 45, 24);
+
+        show(div, 35, 7);
+
+        show(per, 20, 10);
+    </script>
+</head>
+<body>
+</body>
+</html>
