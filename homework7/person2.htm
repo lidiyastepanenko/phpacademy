@@ -1,0 +1,46 @@
+﻿<!--
+
+    В объекты можно вкладывать другие объекты, для этого необходимо 
+    в качестве содержимого свойства поместить описание еще одного объекта.
+    При обращении к свойствам вложенных объектов необходимо полностью указывать путь, например:
+    human.ocupation.company - обращаемся к свойству company объекта ocupation, который вложен в объект human
+
+-->
+
+<html>
+<head>
+    <title>Вложенные обьекты</title>
+
+    <script type="text/javascript">
+var arr = [{
+                name:'lida',
+                age:28,
+                lang: ['js','html']
+            },{
+                name:'olya',
+                age:23,
+                lang: ['js','php']
+            },{
+                name:'nina',
+                age:23
+            },{
+                name: 'ivan',
+                age: 34,
+                lang: ['C++', 'C#', 'html']
+            }
+        ];
+        console.log(arr);
+        for (var i =0; i < arr.length; i++) {
+            for(field in arr[i]) {
+                console.log(arr[i][field]);
+            }
+            console.log('\n');
+        }
+
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>
