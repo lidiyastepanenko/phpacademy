@@ -1,0 +1,53 @@
+<html>
+<head>
+    <title>Person</title>
+
+    <script type="text/javascript">
+      var person = {
+            name: '',
+            sname: '',
+            age:'',
+            lang: []
+            };
+        var arr = [];        
+
+        function ask() {
+            var confirm;
+            do {
+                person = {
+                    name: prompt("Введите свое имя:"),
+                    sname: prompt("Введите свою фамилию:"),
+                    age: prompt("Введите свой возраст:")
+                    };
+                var itemLang = prompt('Enter langs with ,').split(",");        
+                person.lang = (itemLang);
+                arr.push(person); 
+                confirm = prompt("Продолжить?", "yes/no"); 
+            }
+            while (confirm == 'yes');   
+        };
+        function say() {
+            var i;
+            for (i = 0; i < arr.length; i++) {
+                document.write("Имя: " + arr[i].name + "<br />");
+                document.write("Фамилия: " + arr[i].sname + "<br />");
+                document.write("Возраст: " + arr[i].age + "<br />");
+                document.write("Языки: " + arr[i].lang);
+                document.write("<hr/>");
+            };
+        };
+            ask();
+            // say();
+            
+       console.log(arr);
+        for(var target = 0; target < arr.length; target++) {
+            console.log(arr[target]);
+            for( item in  arr[target])
+                console.log(item + ": "+arr[target][item]);
+        }
+
+    </script>
+</head>
+<body>
+</body>
+</html>
