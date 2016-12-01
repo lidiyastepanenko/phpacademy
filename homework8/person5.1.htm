@@ -1,0 +1,154 @@
+﻿<html>
+<head>
+    <title>Person</title>
+    <script type="text/javascript">
+var persons = [{
+                name:'lida',
+                sname: 'stepanenko',
+                age: 28,
+                gender: 'woman',
+                lang: ['js',  'html', 'php']
+            },{
+                name:'olya',
+                sname: 'ivanova',
+                age: 23,
+                gender: 'woman',
+                lang: ['js','php','html', 'C++', 'C#']
+            },{
+                name:'vasya',
+                sname: 'petrov',
+                age: 32,
+                gender:'men',
+                lang: ['php','html', 'C++', 'js']
+            },{
+                name: 'ivan',
+                sname: 'fedorenko',
+                age: 34,
+                gender: 'men',
+                lang: ['C++', 'C#']
+            }
+        ];
+    // var arr = persons;      
+        </script>
+        <script>
+            window.onload = function () {
+            var add = document.getElementById("add");
+            var all = document.getElementById("all");
+            add.onclick = function() {
+                    person = {
+                            name: prompt("Enter your name:"),
+                            sname: prompt("Enter your sname:"),
+                            age: prompt("Enter your age:"),
+                            gender: prompt("Enter your gender?", "men/woman")
+                            };
+                            person.lang = prompt('Enter langs with ,').split(",");    
+                            persons.push(person);
+                            for(var index = 0; index < persons.length; index++) {
+                                for( item in  persons[index])
+                                all.innerHTML += item + ": "+persons[index][item] +  "<br />";
+                                all.innerHTML += "<hr/>";
+                            } 
+                        };              
+       
+            var list =document.getElementById("list");
+            var all = document.getElementById("all");
+            list.onclick = function() {
+                for(var index = 0; index < persons.length; index++) {
+                for( item in  persons[index])
+                all.innerHTML += item + ": "+persons[index][item] +  "<br />";
+                all.innerHTML += "<hr/>";
+                }
+            };
+            var toRemove = document.getElementById("toRemove");
+            var all = document.getElementById("all");
+            toRemove.onclick = function() {
+                var confirm;    
+                confirm = prompt("Delete a name or number", "name/number");
+                if(confirm == "name") {
+                    var toDelete = prompt("Enter name:");
+                    for (var index = 0; index < persons.length; index++){
+                        if (persons[index].name == toDelete) {
+                            persons.splice(index, 1);
+                            
+                        };
+                    };                          
+                    for (var index = 0; index < persons.length; index++){
+                        for( item in  persons[index])
+                        all.innerHTML += item + ": "+persons[index][item] +  "<br />";
+                        all.innerHTML += "<hr/>";
+                    }                      
+                };                                 
+                if(confirm == "number") {
+                    var toDelete = prompt("Enter number:");
+                    persons.splice(toDelete, 1); 
+                    for (var index = 0; index < persons.length; index++){
+                        for( item in  persons[index])
+                        all.innerHTML += item + ": "+persons[index][item] +  "<br />";
+                        all.innerHTML += "<hr/>";
+                    }     
+                };
+            };
+            var sortName = document.getElementById("sortName");
+            var all = document.getElementById("all");
+            sortName.onclick = function() {
+                persons.sort(function(a,b) {
+                if (a.name > b.name) {
+                    return 1;
+                    }
+                if (a.name < b.name) {
+                    return -1;
+                    }
+                    return 0
+                })
+                // console.log(persons);
+                for (var index = 0; index < persons.length; index++){
+                for( item in  persons[index])
+                all.innerHTML += item + ": "+persons[index][item] +  "<br />";
+                all.innerHTML += "<hr/>";
+                };
+            }; 
+            var sortAge = document.getElementById("sortAge");
+            var all = document.getElementById("all");
+            sortAge.onclick = function() {
+                persons.sort(function(a,b) {
+                    return (a.age - b.age) })
+                for (var index = 0; index < persons.length; index++){
+                for( item in  persons[index])
+                all.innerHTML += item + ": "+persons[index][item] +  "<br />";
+                all.innerHTML += "<hr/>";
+                };
+            }; 
+            var sortLang = document.getElementById("sortLang");
+            var all = document.getElementById("all");
+            sortLang.onclick = function() {
+            persons.sort(sortLang).reverse();       
+                function sortLang(a, b) {
+                    if (a.lang.length > b.lang.length) return 1;
+                    if (a.lang.length < b.lang.length) return -1;
+                }
+                    // console.log(persons);
+                    for (var index = 0; index < persons.length; index++){
+                    for( item in  persons[index])
+                    all.innerHTML += item + ": "+persons[index][item] +  "<br />";
+                    all.innerHTML += "<hr/>";
+                    }
+            };
+            var exit = document.getElementById("exit");
+            var all = document.getElementById("all");
+            exit.onclick = function() {
+                document.write('Спасибо за внимание!!');
+            }
+        };   
+    </script>
+</head>
+<body> 
+<input id="add" type="button" value="Добавить в список"> 
+<input id="list" type="button" value="Посмотреть список"> 
+<input id="toRemove" type="button" value="Удалить из списка">
+<input id="sortName" type="button" value="Сортировать по имени">
+<input id="sortAge" type="button" value="Сортировать по возрасту">
+<input id="sortLang" type="button" value="Сортировать по кол-ву языков">
+<input id="exit" type="button" value="Выйти">
+<p id="all"> </p>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>getArea</title>
+
+     <script type="text/javascript">
+        function Rectangle(w, h) {
+            this.width = w;
+            this.height = h;
+            this.getArea = function () {return this.width * this.height;}
+        }
+        function Square(w, h) {
+            this.width = w;
+            this.height = h;
+        }
+        function Circle(π, r) {
+            this.π = π;
+            this.radius = r;
+            this.getArea = function () {return this.π * Math.pow(this.radius, 2);}
+        }
+        function Triangle(b, h){
+            this.base = b;
+            this.height = h;
+            this.getArea = function () {return 1/2* (this.base*this.height);}
+        }
+        var rectangle = new Rectangle(100, 200);
+            Square.prototype = rectangle;
+            Circle.prototype = rectangle;
+            Triangle.prototype = rectangle;
+        var square = new Square(200, 120);
+            square.getArea();
+        var circle = new Circle(3.14, 20);
+            circle.getArea();
+        var triangle = new Triangle(40, 50)
+            triangle.getArea();
+
+            document.write("Площадь прямоугольника: " + rectangle.getArea() + "<br />");
+            document.write("Площадь квадрата: " + square.getArea() + "<br />");
+            document.write("Площадь круга: " + circle.getArea() + "<br />");
+            document.write("Площадь треугольника: " + triangle.getArea() + "<br />");
+    </script>
+</head>
+<body>
+</body>
+</html>
