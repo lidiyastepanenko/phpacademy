@@ -3,6 +3,7 @@
 <head>
 	<title>Form</title>
 	<script src="http://yandex.st/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
 	<script src="js/jquery.maskedinput.min.js"></script>
 	<script type="text/javascript"></script>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
@@ -10,18 +11,18 @@
 		$(document).ready(function(){
 		    $('#contactphone').mask('+38 (999) 999-99-99');
 		    $('#birthdate').mask('99/99/9999');
-
 		var pattern = /^[a-z0-9_-]+@[a-z0-9-]+\.[a-z]{2,6}$/i;
 		var mail = $('#mail');
 			mail.blur(function(){
 				if(mail.val() != ''){
 					if(mail.val().search(pattern) == 0){
 						$('#submit').attr('disabled', false);
+						$('#valid').text('правильный формат!');
 						mail.removeClass('error').addClass('ok');
 					}else{
 						$('#valid').text('Введите правильный формат!');
 						$('#submit').attr('disabled', true);
-						mail.addClass('ok');
+						mail.addClass('error');
 					}
 				}else{
 					$('#valid').text('Поле e-mail не должно быть пустым!');
@@ -32,14 +33,14 @@
   		});
 	</script>
 </head>
-<body
+<body>
 	<div id="form">
 		<form>
 			<table>
 				<tr><th colspan="2", align="midle"><h2>Заполните форму</h2></th></tr>
 				<tr>
 					<td>ФИО:</td>
-					<td><input onkeyup="if(/[^A-Za-zА-Яа-яЁё]\s/.test(this.value))this.value=this.value.replace(/[^A-Za-zА-Яа-яЁё]\s+/g,'')" type="text" id="contactname" required placeholder="Ваше ФИО"></td>
+					<td><input  onKeyUp="if(/[^a-zA-Zа-яА-ЯёЁ .]/i.test(this.value)){this.value='';}" type="text" id="contactname" required placeholder="Ваше ФИО"></td>
 				</tr>			
 				<tr>
 					<td>Номер телефона:</td>

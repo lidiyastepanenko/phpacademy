@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<title>Проверка формы</title>
+	<script type="text/javascript" src="js/main.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+	<body>
+		<div class="form_box">	
+			<form name="form1">
+				<table>
+					<tr><th colspan="2", align="midle"><h2>Заполните форму</h2></th></tr>
+					<tr>
+						<td>От кого:</td>
+						<td><input type="text" onKeyUp="if(/[^a-zA-Zа-яА-ЯёЁ .]/i.test(this.value)){this.value='';}" name="name" placeholder="Ваше имя"></td>
+					</tr>			
+					<tr>
+						<td>Ваш пароль:</td>
+						<td><input type="password" name="pass1" placeholder="Введите пароль"></td>
+					</tr>
+					<tr>
+						<td>Повторите пароль:</td>
+						<td><input type="password" id="pass2" name="pass2" placeholder="Повторите пароль"><span id="valid"></span></td>	
+					</tr>
+					<tr>
+						<td>Куда:</td>
+						<td><select name="to" class="rfiled">
+							<option></option>
+							<option value="1">Отдел снабжения</option>
+							<option value="2">Отдел разработки</option>
+							<option value="3">Директору</option>
+						</select></td>
+					</tr>
+				</table>	
+				Сообщение:
+					<label>
+					    <textarea name="message"  style="display:block;width:400px;height:80px"></textarea></p>
+					</label>
+					<input type="button"  onclick="onsubmitHandler()" value="Проверить"/></p>
+				</form>
+			</div>
+	</body>
+</html>
