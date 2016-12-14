@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>DragElement</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script type="text/javascript">
+        (function(){
+            window.addEventListener("load", init, false);
+            function init() {
+                var elem = document.getElementById("elem");
+                elem.addEventListener("mousedown", function (e) {
+                    drag(this, e);
+                })
+            }
+            function drag(elementToDrag, event) {
+                var startX = event.clientX,
+                    startY = event.clientY;
+                var origX = elementToDrag.offsetLeft,
+                    origY = elementToDrag.offsetTop;
+                var deltaX = startX - origX,
+                    deltaY = startY - origY;
+                document.addEventListener("mousemove", moveHandler, true);
+                document.addEventListener("mouseup", upHandler, true);
+                function moveHandler(e) {
+                    if (!e) e = window.event;
+                    elementToDrag.style.left = (e.clientX - deltaX) + "px";
+                    elementToDrag.style.top = (e.clientY - deltaY) + "px";
+                        var origX = elem.offsetLeft,
+                            origY = elem.offsetTop;
+                    if (origX <= 5 || origY <= 5|| (origX + 50) >= 695 || (origY + 50) >= 495) {
+                        rectangle.classList.add('error');
+                        stop();
+                    }
+                    else {
+                        rectangle.classList.remove('error');
+                    }
+                function stop(e) {
+                    if (origX <= 0) elem.style.left = "0px";
+                    if (origY <= 0) elem.style.top = "0px";
+                    if ((origX + 10) >= 660) elem.style.left = "650px";
+                    if ((origY + 50) >= 500) elem.style.top = "450px";
+                        // console.log(origX);
+                }
+            }
+                function upHandler(e) {
+                    if (!e) e = window.event; 
+                    document.removeEventListener("mouseup", upHandler, true);
+                    document.removeEventListener("mousemove", moveHandler, true);
+                    }
+            }
+        })()
+    </script>
+</head>
+<body>
+    <div id="rectangle" class="rectangle">
+        <div id="elem" class="elem">
+    </div>
+    </div>
+    
+</body>
+</html>
