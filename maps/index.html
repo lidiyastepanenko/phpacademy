@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Maps</title>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHCLEOeM4aFnNsvFE-zbWP3WtRjGqHvD0"></script>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script>
+		function initMap(){
+			var latlng = new google.maps.LatLng (50.342794,30.2807455);
+			var settings = {
+				zoom: 15,
+				center: latlng,
+				mapTypeControl:true,
+				mapTypeControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+				mapTypeId: google.maps.MapTypeId.ROADMAP,
+				styles: [
+				{
+				   "featureType": "landscape.natural",
+				   "elementType": "geometry.fill",
+				   "stylers": [
+				   { "color": "#66FF66" }]
+				},
+				{
+				   "featureType": "landscape.man_made",
+				   "stylers": [
+				   { "color": "#CCCCFF" },
+				   { "visibility": "on" }]
+				},
+				{
+				   "featureType": "water",
+				   "stylers": [
+				   { "color": "#80C8E5" },  // цвет для воды
+				   { "saturation": 0 }]
+				},
+				{
+				   "featureType": "road.arterial",
+				   "elementType": "geometry",
+				   "stylers": [
+				   { "color": "#FFCC33" }]
+				}
+				,{
+				   "elementType": "labels.text.stroke",
+				   "stylers": [
+				   { "visibility": "off" }]
+				}
+				,{
+				   "elementType": "labels.text",
+				   "stylers": [
+				   { "color": "#000033" }]
+				}]
+			};
+			var map = new google.maps.Map(document.getElementById("map_canvas"), settings);
+			var contentString = '<div id="content">'+
+				'<div id="siteNotice">'+
+				'</div>'+
+				'<h2 id="firstHeading" class="firstHeading"><a href="http://rmb.kiev.ua/">RideMyBike</a><img src="img/rmb.jpg"></h2>'+
+				'<div id="bodyContent">'+
+				'<p>Аренда наших велосипедов для Ваших развлечений!<br/> Не забывайте, что мы предлагаем взять в аренду фирменные байки TREK и Kellys,<br/> размеры которых подойдут всем, от мала до велика.</p>'+
+				'</div>'+
+				'</div>';
+			var infowindow = new google.maps.InfoWindow({
+				content: contentString
+			});
+			var companyLogo = new google.maps.MarkerImage ('img/geo.png',
+				new google.maps.Size (80,80),
+				new google.maps.Point (0,0),
+				new google.maps.Point(50, 50)
+			);
+			var companyPos = new google.maps.LatLng (50.342794,30.2807455);
+			var companyMarker = new google.maps.Marker({
+				position: companyPos,
+				map: map,
+				animation: google.maps.Animation.DROP,
+				icon: companyLogo,
+				title: "RideMyBike"
+			});
+		google.maps.event.addListener(companyMarker, 'click', function() {
+		infowindow.open(map,companyMarker);
+		});
+	}
+	</script>
+</head>
+<body onload="initMap()">
+	<div id="map_canvas" class="map_canvas"></div>
+</body>
+</html>
