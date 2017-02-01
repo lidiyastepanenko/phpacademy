@@ -1,0 +1,27 @@
+/* main css stylesheet */
+#taskList .strike{
+	text-decoration: line-through;
+}
+#taskList .description {
+	font-family: "Lobster", cursive;
+	font-weight: 500;
+	font-size: 20px;
+	margin-bottom: 0px;
+	cursor: pointer;
+}
+#taskList input {
+	margin-right: 10px;
+}
+
+#taskList button {
+	float: right;
+	/*margin-top: 5px;*/
+	font-size: 12px;
+	visibility:visible;
+}
+.down {
+	font-size: 18px;
+	color: green;
+	/*float: right;*/
+	font-style: italic, bold;
+}
