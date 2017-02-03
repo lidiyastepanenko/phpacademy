@@ -3,33 +3,44 @@
 <head>
 	<title>Список задач</title>	
 	<script type="text/javascript" src="Libraries/angular.js"></script>
-	<script type="text/javascript" src="Libraries/angular-animate.js"></script>
 	<script type="text/javascript" src="main.js"></script>
 	<script type="text/javascript" src="controller.js"></script>
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="stylesheet" type="text/css" href="Libraries/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="Libraries/bootstrap-theme.css">
 </head>
-<body ng-app="todoApp" ng-controller="todoController" class="container">
-	<div class="row-fluid">
+<body ng-app="todoApp" class="container">
+	<div class="row-fluid" ng-controller="todoController">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="jumbotron">
-				<form ng-submit="addTask()">
-					<div class="input-group input-group-lg">
-						<input type="text" ng-model="newTask" class="form-control input-lg" placeholder="Что должно быть сделано?" />
-						<span class="input-group-btn"><button type="submit" class="btn btn-default">Добавить задачу</button>
+				<form name="myForm" novalidate ng-submit="addTask()">
+					<div class="input-group input-group-lg" >
+						<table>
+							<tr>
+								<td>
+									<input type="text" ng-model="newTask" class="form-control input-lg"  placeholder="Например: сделать...." autofocus required />
+								</td>
+								<td>
+									<input type="date" ng-model="setDate"  class="form-control input-lg" >
+								</td>
+							</tr>
+						</table>
+						<span class="input-group-btn"><button type="submit" class="btn btn-default" ng-disabled="myForm.$invalid">Добавить задачу</button>
 						</span>
 					</div>
 				</form>
 			</div>	
+			<div class="col-md-12" >
 			<table id="taskList" class="table table-striped" >
-				<tbody ng-repeat="task in taskList" >				
+				<tbody ng-repeat="task in taskList track by $index"" >				
 					<tr ng-if="task != activeTask">
 						<td>
 			             <input type="checkbox" ng-model="task.done">	
 			             </td>
 						<td><label class="description" ng-class="{strike: task.done}">
 							{{task.description}}</label>
+			            </td>
+			            <td><label class="date" >
+							{{task.date | date: "dd-MM-yyyy"}}</label>
 			            </td>
 			            <td>
 			            	<a class="btn btn-primary" href="" ng-hide="task.done" ng-click="editTask(task)"> Редактировать </a>
@@ -44,12 +55,17 @@
 						<td>
 							<input id="taskList" class="description" ng-model="task.description" type="text" autofocus>
 			            </td>
+			            <!-- <td>
+							<input class="date" id="taskList" type="date" ngModel="setDate"> -->
+						</td>
 			            <td>
 			            <a class="btn btn-primary" href="" ng-click="updateTask(task)"> Сохранить </a>
 			            </td>
 			        </tr>
+			        <span class="h4">Осталось {{remain()}} из {{taskList.length}}</span>
 			    </tbody>
 			</table>
+			</div>
 		</div>
 	</div>
 </body>

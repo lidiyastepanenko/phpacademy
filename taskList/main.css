@@ -5,18 +5,19 @@
 #taskList .description {
 	font-family: "Lobster", cursive;
 	font-weight: 500;
-	font-size: 20px;
+	font-size: 16px;
 	margin-bottom: 0px;
 	cursor: pointer;
 }
 #taskList input {
-	margin-right: 10px;
+	float: left;
+	margin-right: 0px;
 }
 
 #taskList button {
 	float: right;
 	/*margin-top: 5px;*/
-	font-size: 12px;
+	font-size: 10px;
 	visibility:visible;
 }
 .down {
@@ -24,4 +25,12 @@
 	color: green;
 	/*float: right;*/
 	font-style: italic, bold;
+}
+.date{
+	font-family: "Lobster", cursive;
+	float: right;
+	font-weight: 300;
+	font-size: 14px;
+	margin-bottom: 0px;
+	cursor: pointer;
 }
