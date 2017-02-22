@@ -12,7 +12,6 @@
 <script type="text/jsx">
   var Badge = React.createClass({
     render: function() {
-      console.log(this.props.color);
       if(this.props.color === 'link') {
         return <button className="btn btn-link" type="button">
           {this.props.title} <span className="badge">{this.props.number}</span></button>
@@ -26,29 +25,25 @@
   });
 
   var Header = React.createClass({
-    render: function(){
-      return <div className="header">
-        <Badge color="link" title="О нас" />
-        <Badge color="link" title="Контакты" />
-        <Badge color="link" title="Услуги" />
-        <Badge color="link" title="Главная" />
+     render: function() {
+      var navlist = this.props.nav.map(function(item){
+       
+        return <a className="btn-link" href={"/${item}"}>{item}</a>
+      });
+      return <div >
+       <img src="this.props.logo" alt="" />
+       {navlist}
       </div>
-    } 
+    }
   });
 
-  var Footer = React.createClass({
-    render: function(){
-      return <div className="footer">
-        <a href="https://www.facebook.com/lidiyka?ref=bookmarks">
-          <Badge color="primary" title="facebook" />
-        </a>
-        <a href="https://github.com/lidiyastepanenko" >
-          <Badge color="primary" title="GitHub" />
-        </a>
+   var Footer = React.createClass({
+     render: function() {
+      return <div >
+          <Badge color="primary" title={this.props.title} />
       </div>
-    } 
+    }
   });
-
   var Thumbnail = React.createClass({
     render: function() {
       return <div className="col-sm-6 col-md-4">
@@ -70,14 +65,19 @@
   var ThumbnailList = React.createClass({
     render: function() {
       var list = this.props.thumbnailData.map(function(item,key){
-        console.log(key , item);
         return <Thumbnail key={key} {...item} />
       });
-      console.log(list);
+      var footer = this.props.footerData.map(function(item,key){
+        return <Footer key={key} {...item} />
+      });
       return <div>
-        <Header />
+      <div className="header">
+        <Header nav={this.props.headerData.nav} logo={this.props.headerData.logo} />
+        </div> 
         {list}
-        <Footer />
+      <div className="footer">
+        {footer}
+      </div>
       </div>
     }
   });
@@ -102,7 +102,18 @@
       description: 'React is a fantastic new front end library for rendering web pages. React is a fantastic new front end library for rendering web pages.',
       imageUrl: 'https://raw.githubusercontent.com/wiki/facebook/react/react-logo-1000-transparent.png',
     }
-    ]
+    ],
+    headerData: {
+      nav: ['О нас', 'Контакты', 'Главная'],
+      logo: 'https://raw.githubusercontent.com/wiki/facebook/react/react-logo-1000-transparent.png',      
+    },
+    footerData: [{
+      title: 'facebook',
+      url: 'https://www.facebook.com/lidiyka?ref=bookmarks',
+    },{
+      title: 'GitHub',
+      url: 'https://github.com/lidiyastepanenko',
+    }],
   };
 
   var element = React.createElement(ThumbnailList, options);

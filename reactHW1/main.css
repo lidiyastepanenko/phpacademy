@@ -20,7 +20,9 @@
   height: 50px;
 }
 .btn-link{
-  float: right;
-  margin: 5px;
-}
   
+}
+.btn-primary{
+  float: left;
+  margin: 5px;
+  }
