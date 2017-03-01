@@ -3,7 +3,7 @@ var ReactFire = require('reactfire');
 var Firebase = require('firebase');
 var Header = require('./header');
 var List = require('./list');
-var rootUrl = 'https://blistering-torch-4253.firebaseio.com/';
+var rootUrl = 'https://todos-a6c6f.firebaseio.com/';
 
 var App = React.createClass({
   mixins: [ ReactFire ],
@@ -61,6 +61,14 @@ var App = React.createClass({
       }
     }
   },
+   showDoneClick: function() {
+      var arr = this.props.items[key].done;
+      console.log(this.props.items[key].done);
+        var taskDone = arr.filter(function(done) {
+          return done===true;
+          {console.log(taskDone)}
+        });
+    },
   handleDataLoaded: function(){
     this.setState({
       loaded: true

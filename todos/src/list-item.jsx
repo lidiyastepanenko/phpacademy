@@ -1,6 +1,6 @@
 var React = require('react');
 var Firebase = require('firebase');
-var rootUrl = 'https://blistering-torch-4253.firebaseio.com/';
+var rootUrl = 'https://todos-a6c6f.firebaseio.com/';
 
 module.exports = React.createClass({
   getInitialState: function() {
